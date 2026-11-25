@@ -164,7 +164,7 @@ worker-172-31-x   Ready
 
 - **Lost or expired join command:** tokens expire after 24 hours. Generate a new one on the master:
   ```bash
-  kubeadm token create --print-join-command
+  sudo kubeadm token create --print-join-command
   ```
 - **Nodes stuck in `NotReady`:** usually no CNI plugin is running yet. Check with `kubectl get pods -n kube-system` and `kubectl describe node <node>`.
 - **Upgrades:** don't skip minor versions. Upgrade one minor version at a time following the official kubeadm steps.
