@@ -6,9 +6,12 @@ Create a Kubernetes cluster with **kubeadm** on AWS EC2. Optimized for learning,
 
 | File | Purpose |
 |------|---------|
-| `docker-install.sh` | Installs Docker and prepares the container runtime (run on **every** node) |
 | `master-node-setup.sh` | Sets up the control plane, initializes the cluster, installs Calico |
 | `worker-node-setup.sh` | Prepares a worker node so it can join the cluster |
+
+## Versions
+
+The scripts install Kubernetes **v1.36** (set `K8S_VERSION` at the top of both scripts; keep them identical). Kubernetes 1.36+ requires **containerd 2.x**, so the scripts install `containerd.io` from Docker's apt repository instead of Ubuntu's older `containerd` package. Docker itself is not needed: Kubernetes talks to containerd directly.
 
 ## Architecture
 
@@ -69,16 +72,10 @@ git clone https://github.com/mudasirhaji/kubeadm-installation-2026.git
 cd kubeadm-installation-2026
 ```
 
-### 2. Install Docker / runtime dependencies (every node)
+### 2. Run the master script
 
 ```bash
 chmod +x *.sh
-./docker-install.sh
-```
-
-### 3. Run the master script
-
-```bash
 ./master-node-setup.sh
 ```
 
@@ -87,7 +84,7 @@ The script:
 - Sets the hostname to `master`
 - Disables swap
 - Configures kernel networking
-- Installs containerd and enables `SystemdCgroup`
+- Installs containerd (from Docker's apt repo) and enables `SystemdCgroup`
 - Installs kubeadm, kubelet, kubectl
 - Initializes the cluster
 - Configures kubectl
@@ -112,11 +109,10 @@ git clone https://github.com/mudasirhaji/kubeadm-installation-2026.git
 cd kubeadm-installation-2026
 ```
 
-### 2. Install Docker and run the worker script
+### 2. Run the worker script
 
 ```bash
 chmod +x *.sh
-./docker-install.sh
 ./worker-node-setup.sh
 ```
 
@@ -184,3 +180,4 @@ worker-172-31-x   Ready
 - [Installing kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 - [Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 - [Upgrading kubeadm clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+
