@@ -65,8 +65,8 @@ Allowing all traffic inside the group also covers Calico's networking needs (BGP
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/kubeadm-intasllation-2026.git
-cd kubeadm-intasllation-2026
+git clone https://github.com/mudasirhaji/kubeadm-installation-2026.git
+cd kubeadm-installation-2026
 ```
 
 ### 2. Install Docker / runtime dependencies (every node)
@@ -108,8 +108,8 @@ Copy it for the workers.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/kubeadm-intasllation-2026.git
-cd kubeadm-intasllation-2026
+git clone https://github.com/mudasirhaji/kubeadm-installation-2026.git
+cd kubeadm-installation-2026
 ```
 
 ### 2. Install Docker and run the worker script
